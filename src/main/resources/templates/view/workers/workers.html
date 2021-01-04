@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{decorator/default/decorator-default}">
+
+	<head>
+		<title>Workers</title>
+		<link th:href="@{/view/workers/workers.css}" rel="stylesheet">
+		<script type="text/javascript" th:src="@{/view/workers/workers.js}" ></script>
+	</head>
+	
+	<body>
+		<th:block layout:fragment="content">
+			<div class="breadcrumb-bar">
+				<nav>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a th:href="@{/}"><i class="fas fa-home"></i> 首页</a></li>
+						<li class="breadcrumb-item active">workers</li>
+					</ol>
+				</nav>
+				<div>
+					<span class="text-success d-none msg-connected">已连接到服务器</span>
+					<span class="text-danger d-none msg-disconnected">与服务器连接已断开</span>
+				</div>
+			</div>
+			<div class="content-wrapper">
+				<div id="workers" class="d-flex flex-wrap">
+				</div>
+			</div>
+		</th:block>
+
+	</body>
+	
+</html>

@@ -1,0 +1,4 @@
+.select-group~.invalid-feedback {display: inline-block; }
+select.form-control.is-invalid:disabled, select.form-control.is-invalid:not([size]):not([multiple]):disabled {
+	    border-color: #f44336;
+}

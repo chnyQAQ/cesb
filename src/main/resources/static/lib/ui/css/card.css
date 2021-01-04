@@ -1,0 +1,26 @@
+.card { margin-bottom: 15px; box-shadow: 0 1px 3px rgba(10,10,10,.15); }
+.card-header {
+	height: 50px;
+	padding: 0 1.25rem;
+	border-bottom: 1px solid #ebebeb;
+	/* flex */
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}
+.card-header > h5 { margin: 0; font-size: 1.125rem; }
+.card-body { padding: 1.125rem 1.25rem; }
+.card-title {
+	font-size: 1rem;
+	margin-bottom: 1rem;
+	/* flex */
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}

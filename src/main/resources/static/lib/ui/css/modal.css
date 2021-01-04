@@ -1,0 +1,24 @@
+
+.modal-content {
+	border: 1px solid #ddd;
+	box-shadow: 0 5px 20px rgba(26,26,26,.1);
+}
+
+.modal-body {
+	padding: 1.75rem 2.75rem 1.25rem 2.25rem;
+}
+
+.modal-header {
+	padding: 0.75rem 1.25rem 0.75rem 1.25rem;
+	border-bottom: 1px solid #ebebeb;
+}
+
+.modal-footer {
+	padding: 0.75rem 1.25rem 0.875rem 1.25rem;
+	border-top: 1px solid #ebebeb;
+}
+
+.modal-dialog-centered { height: 600px; min-height: calc(100% - (1.75rem * 2)); }
+
+.modal-content { background-color: #fff!important; }
+.modal-content.bg-light { background-color: #fafbfc!important; }

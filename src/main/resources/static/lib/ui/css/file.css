@@ -1,0 +1,67 @@
+.fileQueueList {
+	padding: 5px 0px; position:relative;
+}
+.fileQueueList .upload-file {
+	position: relative;
+    width: 120px;
+    height: 120px;
+    padding: 4px;
+    border: 1px solid rgb(222, 222, 222);
+    border-radius: 3px;
+    display: inline-block;
+    float: left;
+    margin-right: 5px;
+    background: #fff;
+}
+.upload-file .delete {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    z-index: 300;
+    height: 0px;
+}
+.fileinput-button{
+	margin-top: 5px;
+    margin-left: 10px;
+    line-height: 30px;
+}
+.upload-file .file-delete{
+	position: absolute;
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    z-index: 300;
+    height: 0px;
+}
+.upload-file .file-delete .delete-img {
+	width: 24px;
+    height: 24px;
+    display: inline;
+    float: right;
+    text-indent: -9999px;
+    overflow: hidden;
+    background: url(../css/img/icons_del.png) no-repeat;
+    margin: 5px 1px 1px;
+    cursor: pointer;
+}
+.upload-file .file-name {
+	font-size: 12px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+.upload-file .otherfile {
+	font-size:12px;text-align:center;margin-bottom:10px;margin-top:15px;
+}
+.upload-file a {
+	word-wrap: break-word; white-space: normal;
+}
+.upload-file .file-extensions {
+	font-size:26px;text-align:center;
+}
+

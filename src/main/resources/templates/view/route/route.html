@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{decorator/blank/decorator-blank}">
+<head>
+	<title th:text="${'路由管理-'+route.name}"></title>
+	<link th:href="@{/view/route/route.css}" rel="stylesheet">
+	<script type="text/javascript" th:src="@{/view/route/uuid.js}" ></script>
+	<script type="text/javascript" th:src="@{/view/route/route.js}" ></script>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		currentRoute = /*[[${route}]]*/ '';
+		currentEndpointMap = /*[[${endpointMap}]]*/ '';
+		/*]]>*/
+	</script>
+</head>
+<th:block layout:fragment="content">
+	<nav class="navbar navbar-expand">
+		<div class="navbar-brand  text-dark"><strong th:text="${route.name}"></strong></div>
+		
+	</nav>
+	<div class="page-wrapper">
+		<div class="nav-container">
+			<div class="border-bottom" style="padding: 8px 12px;height: 50px;">
+				<form id="searchForm" class="form-inline" style="opacity: 1;">
+					<div class="input-group" style="width: 100%;">
+						<input name="search" type="text" class="form-control" placeholder="名称/代码" autocomplete="off">
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<ul class="nav flex-column" id="endpointListUl"></ul>
+		</div>
+		<div class="main-container">
+			<div class="breadcrumb-bar" style="background: #fbfbfb;">
+				<div id="toolbar" class="">
+					<!-- <button id="changeLayoutBtn" class="btn btn-outline-secondary">调整布局</button> -->
+					<button id="removeBtn" class="btn btn-outline-secondary" disabled="disabled">删除</button>
+				</div>
+				<button id="saveBtn" class="btn btn-primary"><i class="fas fa-save"></i> 保存</button>
+			</div>
+			<div class="content-wrapper">
+				<div id="jgraphDiv" class="jgraph"></div>
+			</div>	
+		</div>
+	</div>
+		
+
+	
+	
+
+</th:block>
+</html>

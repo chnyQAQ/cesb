@@ -1,0 +1,21 @@
+.footer {
+    position: fixed;
+    left: 250px;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    
+	display: -ms-flexbox;
+    display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	
+	font-size: 0.9rem;
+	color: #8590a6;
+	height: 40px;
+	padding: 0 20px;
+	background-color: #fafafa;
+	border-top: 1px solid #ebebeb;
+}

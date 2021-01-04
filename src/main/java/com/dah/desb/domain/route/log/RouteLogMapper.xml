@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dah.desb.domain.route.log.RouteLogMapper">
+
+	<select id="getById" resultType="com.dah.desb.domain.route.log.RouteLog">
+		select * from route_log where id = #{id}
+	</select>
+
+	<select id="getByRoute" resultType="com.dah.desb.domain.route.log.RouteLog">
+		select * from route_log where routeId = #{routeId}
+	</select>
+
+	<select id="getPage" resultType="com.dah.desb.domain.route.log.RouteLog">
+		select * from route_log as routeLog where routeLog.routeId = #{routeId}
+		<if test="beginTime != null">
+			and routeLog.beginTime <![CDATA[ >= ]]> #{beginTime}
+		</if>
+		<if test="endTime != null">
+			and routeLog.endTime <![CDATA[ <= ]]> #{endTime}
+		</if>
+		order by routeLog.beginTime asc, routeLog.endTime asc
+	</select>
+
+	<select id="getByBeginTime" resultType="com.dah.desb.domain.route.log.RouteLog">
+		select * from route_log as routeLog where 1 = 1
+		<if test="beginTime != null">
+			and routeLog.beginTime <![CDATA[ >= ]]> #{beginTime}
+		</if>
+		order by routeLog.beginTime asc, routeLog.endTime asc
+	</select>
+
+
+	<select id="getList" resultType="com.dah.desb.domain.route.log.RouteLog">
+		select * from route_log as routeLog where 1 = 1
+		<if test="beginTime != null">
+			and routeLog.beginTime <![CDATA[ >= ]]> #{beginTime}
+		</if>
+		<if test="endTime != null">
+			and routeLog.beginTime <![CDATA[ <= ]]> #{endTime}
+		</if>
+		order by routeLog.beginTime asc
+	</select>
+
+	<select id="getAll" resultType="com.dah.desb.domain.route.log.RouteLog">
+		select * from route_log
+	</select>
+
+	<insert id="save" parameterType="com.dah.desb.domain.route.log.RouteLog">
+		insert into route_log
+			(id, routeId, invoke, success, beginTime, endTime)
+		values
+			(#{id}, #{routeId}, #{invoke}, #{success}, #{beginTime}, #{endTime})
+	</insert>
+
+	<update id="update" parameterType="com.dah.desb.domain.route.log.RouteLog">
+		update route_log set
+			routeId = #{routeId},
+			invoke = #{invoke},
+			success = #{success},
+			beginTime = #{beginTime},
+			endTime = #{endTime}
+		where id = #{id}
+	</update>
+
+	<delete id="remove" parameterType="java.lang.String">
+		delete from route_log where id = #{id}
+	</delete>
+
+	<delete id="removeByRoute" parameterType="java.lang.String">
+		delete from route_log where routeId = #{routeId}
+	</delete>
+
+</mapper>

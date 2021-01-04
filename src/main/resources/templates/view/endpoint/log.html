@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{decorator/default/decorator-default}">
+<head>
+	<title>端点日志</title>
+	<script type="text/javascript" th:src="@{/view/endpoint/log.js}" ></script>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		endpointId = /*[[${endpointId}]]*/ '';
+		endpoint = /*[[${endpoint}]]*/ '';
+		/*]]>*/
+	</script>
+</head>
+<th:block layout:fragment="content">
+
+	<div class="breadcrumb-bar">
+		<nav>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a th:href="@{/}"><i class="fas fa-home"></i> 首页</a></li>
+				<li class="breadcrumb-item"><a th:href="@{${endpointPage}}">端点列表</a></li>
+				<li class="breadcrumb-item active"><span th:text="${endpoint.name}"></span></li>
+			</ol>
+		</nav>
+	</div>
+	
+	<div class="content-wrapper">
+		<div class="card">
+			<div class="card-header border-bottom">
+				<h5><i class="far fa-file-alt"></i> 端点详情</h5>
+			</div>
+			<div class="card-body d-flex">
+				<div class="col-sm-6">
+					<dl class="row">
+						<dt class="col-sm-4">代码：</dt>
+						<dd class="col-sm-8" th:text="${endpoint.code}" ></dd>
+						<dt class="col-sm-4">URL：</dt>
+						<dd class="col-sm-8" th:text="${endpoint.url}" ></dd>
+					</dl>
+				</div>
+				<div class="col-sm-6">
+					<dl class="row">
+						<dt class="col-sm-4">名称：</dt>
+						<dd class="col-sm-8" th:text="${endpoint.name}" ></dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+
+		<div class="tabs-container">
+			<ul class="nav nav-tabs">
+				<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#nav-log">日志</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane show active" id="nav-log">
+					<div class="card">
+
+						<div class="card-body">
+							<div class="card-title">
+								<h5><i class="far fa-list-alt"></i> 端点日志</h5>
+								<form id="searchForm" class="form-inline">
+									<div class="input-group">
+										<input name="beginTime" type="text" class="input-sm form-control" placeholder="开始时间" autocomplete="off">
+										<div class="input-group-prepend input-group-append">
+											<span class="input-group-text"> - </span>
+										</div>
+										<input name="endTime" type="text" class="input-sm form-control" placeholder="结束时间" autocomplete="off">
+										<div class="input-group-append">
+											<button class="btn btn-outline-secondary btn-sm" type="submit"><i class="fas fa-search"></i></button>
+										</div>
+									</div>
+								</form>
+							</div>
+							<table class="table table-hover table-striped table-bordered">
+								<thead>
+									<tr>
+										<th>调用路由</th>
+										<th>开始时间</th>
+										<th>结束时间</th>
+										<th class="text-center">耗时(毫秒)</th>
+										<th class="text-center">是否出现异常</th>
+										<th class="text-center">异常类别</th>
+										<th class="text-center">异常信息</th>
+									</tr>
+								</thead>
+							</table>
+							<nav class="navbar">
+								<div class="pagination-info"></div>
+								<ul class="pagination"></ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</th:block>
+</html>

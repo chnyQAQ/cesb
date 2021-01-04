@@ -1,0 +1,75 @@
+
+.nav-container { overflow: scroll; -ms-overflow-style: none; }
+.nav-container::-webkit-scrollbar { width: 0 !important; }
+
+.nav-container > .nav > .nav-item { transition: all 0.4s; border-left: 4px solid transparent; }
+.nav-container > .nav > .nav-item:hover {  }
+.nav-container > .nav > .nav-item.active { border-left: 4px solid #0084ff; }
+
+.nav-container > .nav > .nav-item > .nav-link {
+	font-weight: normal;
+	padding: 0 20px 0 25px;
+	color: #8590a6;
+	height: 50px;
+	
+	display: -ms-flexbox;
+    display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+}
+.nav-container > .nav > .nav-item > .nav-link:hover { font-weight: bold; background-color: transparent; color: #76839b; }
+.nav-container > .nav > .nav-item > .nav-link:focus { font-weight: bold; background-color: transparent; color: #76839b; }
+.nav-container > .nav > .nav-item.active > .nav-link { background-color: rgba(133,144,166,.08); font-weight: bold; color: #444; }
+.nav-container > .nav > .nav-item > .nav-link.active { background-color: rgba(133,144,166,.08); font-weight: bold; color: #444; }
+
+.nav-container > .nav > .nav-item > .nav-link > span { display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; }
+.nav-container > .nav > .nav-item > .nav-link .fas,
+.nav-container > .nav > .nav-item > .nav-link .far { width: 20px; text-align: center; font-size: 1rem; margin-right: 5px; }
+
+.nav-container > .nav > .nav-item > .nav-link[data-toggle="collapse"][aria-expanded="true"] { background-color: #f7f8f9; font-weight: bold; color: #5b5d5f; }
+.nav-container > .nav > .nav-item > div.collapsing .nav { background-color: #f7f8f9; }
+.nav-container > .nav > .nav-item > div.collapse.show .nav { background-color: #f7f8f9; }
+
+.nav-container > .nav > .nav-item .nav .nav-link { font-weight: normal; padding: 8px 20px 8px 25px; color: #676a6c; }
+.nav-container > .nav > .nav-item .nav .nav-link:hover { background-color: transparent; font-weight: bold; color: #676a6c; }
+.nav-container > .nav > .nav-item .nav .nav-link:focus { background-color: transparent; font-weight: bold; color: #676a6c; }
+.nav-container > .nav > .nav-item .nav > .nav-item.active > .nav-link { font-weight: bold; font-weight: bold; color: #5b5d5f; }
+.nav-container > .nav > .nav-item .nav > .nav-item > .nav-link.active { font-weight: bold; font-weight: bold; color: #5b5d5f; }
+
+
+.nav-container .nav-link[data-toggle="collapse"] {
+	position: relative;
+	
+	display: -ms-flexbox;
+    display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}
+
+.nav-container .nav-link[data-toggle="collapse"]::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+}
+.nav-container .nav-link[data-toggle="collapse"]:after {
+    transition: transform .35s ease, opacity .35s ease;
+    opacity: .5;
+}
+.nav-container .nav-link[data-toggle="collapse"][aria-expanded="true"]:after {
+    transform: rotate(0deg);
+    opacity: .9;
+}
+.nav-container .nav-link[data-toggle="collapse"][aria-expanded="false"]:after {
+    transform: rotate(-90deg);
+}
+
+

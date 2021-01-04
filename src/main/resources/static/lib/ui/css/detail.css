@@ -1,0 +1,29 @@
+
+.bg-detail {
+	background-image: url('img/detail-bg.png');
+    background-repeat: repeat;
+}
+
+dl.row > dt {
+	overflow: hidden;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    
+    text-align: right;
+	color: #999;
+	font-size: 12px;
+	line-height: 26px;
+    padding: 0 1rem 0 0;
+}
+
+dl.row > dd {
+	word-break: break-all;
+	
+	font-size: 13px;
+	line-height: 26px;
+	padding: 0;
+	margin-bottom: 0;
+}
+
+

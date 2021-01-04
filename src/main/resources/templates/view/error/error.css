@@ -1,0 +1,15 @@
+html, body {
+	height: 100%;
+}
+
+body {
+	display: -ms-flexbox;
+    display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	
+	color: #333;
+	padding-bottom: 150px;
+}

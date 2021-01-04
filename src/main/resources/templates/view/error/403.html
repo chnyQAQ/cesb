@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{decorator/default/decorator-default}">
+	
+	<head>
+		<title>错误 | 403</title>
+		<link th:href="@{/view/error/error.css}" rel="stylesheet">
+	</head>
+	
+	<th:block layout:fragment="content">
+	    <div class="container text-center">
+	        <h1>403</h1>
+	        <h5>很抱歉，没有访问权限！</h5>
+	    </div>
+	</th:block>
+	
+</html>

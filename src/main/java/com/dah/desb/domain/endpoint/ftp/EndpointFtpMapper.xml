@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dah.desb.domain.endpoint.ftp.EndpointFtpMapper">
+
+	<select id="getCount" resultType="int">
+		select count(1) from endpoint_ftp
+	</select>
+
+	<select id="getById" parameterType="java.lang.String" resultType="com.dah.desb.domain.endpoint.ftp.EndpointFtp">
+		select * from endpoint_ftp where id = #{id}
+	</select>
+
+	<select id="getByCode" resultType="com.dah.desb.domain.endpoint.ftp.EndpointFtp">
+		select * from endpoint_ftp where code = #{code}
+	</select>
+
+	<select id="getByName" resultType="com.dah.desb.domain.endpoint.ftp.EndpointFtp">
+		select * from endpoint_ftp where name = #{name}
+	</select>
+
+	<select id="getPage" resultType="com.dah.desb.domain.endpoint.ftp.EndpointFtp">
+		select * from endpoint_ftp ftp where 1=1
+		<if test="search != null and search != ''">
+			<bind name="search" value="'%' + search + '%'" />
+			and (ftp.code like #{search} or ftp.name like #{search})
+		</if>
+		order by ftp.code asc, ftp.name asc
+	</select>
+
+	<select id="getSearch" resultType="com.dah.desb.domain.endpoint.ftp.EndpointFtp">
+		select * from endpoint_ftp ftp where 1=1
+		<if test="search != null and search != ''">
+			<bind name="search" value="'%' + search + '%'" />
+			and (ftp.code like #{search} or ftp.name like #{search})
+		</if>
+		order by ftp.code asc, ftp.name asc
+	</select>
+
+	<insert id="save" parameterType="com.dah.desb.domain.endpoint.ftp.EndpointFtp">
+		insert into endpoint_ftp (id, code, name, component, path, username, password, options)
+		values (#{id}, #{code}, #{name}, #{component}, #{path}, #{username}, #{password}, #{options})
+	</insert>
+
+	<update id="update" parameterType="com.dah.desb.domain.endpoint.ftp.EndpointFtp">
+		update endpoint_ftp set
+			code = #{code},
+			name = #{name},
+			component = #{component},
+			path = #{path},
+			username = #{username},
+			password = #{password},
+			options = #{options}
+		where id = #{id}
+	</update>
+
+	<delete id="remove" parameterType="java.lang.String">
+		delete from endpoint_ftp where id = #{id}
+	</delete>
+
+</mapper>

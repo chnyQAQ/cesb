@@ -1,0 +1,12 @@
+.dropdown-menu > .tabs-container { margin-top: 6px; }
+.dropdown-menu > .tabs-container > .nav-tabs {}
+.dropdown-menu > .tabs-container > .nav-tabs > .nav-item-right { position: absolute; z-index: 1; right: 5px; top: 5px; }
+.dropdown-menu > .tabs-container > .nav-tabs > .nav-item { margin-left: 6px; }
+.dropdown-menu > .tabs-container > .nav-tabs > .nav-item > .nav-link { padding: 8px 9px 9px 9px; }
+
+.dropdown-menu > .tabs-container > .tab-content > .tab-pane { padding: 10px 15px 20px 15px; }
+.dropdown-menu > .tabs-container > .tab-content > .tab-pane > div {}
+.dropdown-menu > .tabs-container > .tab-content > .tab-pane > div > div { height: auto; padding: 5px; }
+.dropdown-menu > .tabs-container > .tab-content > .tab-pane  > div > div > .item { font-size: 90%; font-weight: normal; cursor: pointer; }
+.dropdown-menu > .tabs-container > .tab-content > .tab-pane   > div > div > .item:hover { color: red; }
+.dropdown-menu > .tabs-container > .tab-content > .tab-pane   > div > div > .item.active { color: red; }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dah.desb.domain.route.endpoint.RouteEndpointMapper">
+
+	<select id="getById" resultType="com.dah.desb.domain.route.endpoint.RouteEndpoint">
+		select * from route_endpoint where id = #{id}
+	</select>
+
+	<select id="getFrom" resultType="com.dah.desb.domain.route.endpoint.RouteEndpoint">
+		select * from route_endpoint where routeId = #{routeId} and (previousId is null or previousId = '')
+	</select>
+
+	<select id="getListByRoute" resultType="com.dah.desb.domain.route.endpoint.RouteEndpoint">
+		select * from route_endpoint where routeId = #{routeId}
+	</select>
+
+	<select id="getNextList" resultType="com.dah.desb.domain.route.endpoint.RouteEndpoint">
+		select * from route_endpoint where previousId = #{previousRouteEndpointId}
+	</select>
+
+	<select id="getListByEndpoint" resultType="com.dah.desb.domain.route.endpoint.RouteEndpoint">
+		select * from route_endpoint where endpointType = #{endpointType} and endpointId = #{endpointId}
+	</select>
+
+	<insert id="save" parameterType="com.dah.desb.domain.route.endpoint.RouteEndpoint">
+		insert into route_endpoint (id, routeId, endpointType, endpointId, expression, previousId)
+		values (#{id}, #{routeId}, #{endpointType}, #{endpointId}, #{expression}, #{previousId})
+	</insert>
+
+	<update id="update" parameterType="com.dah.desb.domain.route.endpoint.RouteEndpoint">
+		update route_endpoint set
+			routeId = #{routeId},
+			endpointType = #{endpointType},
+			endpointId = #{endpointId},
+			expression = #{expression},
+			previousId = #{previousId}
+		where id = #{id}
+	</update>
+
+	<delete id="remove" parameterType="java.lang.String">
+		delete from route_endpoint where id = #{id}
+	</delete>
+
+	<delete id="removeByRoute" parameterType="java.lang.String">
+		delete from route_endpoint where routeId = #{routeId}
+	</delete>
+
+</mapper>

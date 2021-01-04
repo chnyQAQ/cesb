@@ -1,0 +1,20 @@
+#workers {
+	margin: -0.5rem!important;
+}
+
+.card-worker {
+	width: 500px;
+}
+
+.card-worker .list-group-item {
+	padding: .625rem 1rem;
+}
+.card-worker .list-group-item > div {
+	height: 30px;
+	display: -ms-flexbox;
+    display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}

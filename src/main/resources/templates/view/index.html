@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{decorator/default/decorator-default}">
+<head>
+	<title>首页</title>
+	<script type="text/javascript" th:src="@{/view/index.js}" ></script>
+</head>
+<th:block layout:fragment="content">
+	
+	<div class="breadcrumb-bar">
+		<nav>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><span><i class="fas fa-home"></i> 首页</span></li>
+			</ol>
+		</nav>
+	</div>
+	
+	<div class="content-wrapper">
+
+	</div>
+	
+</th:block>
+</html>

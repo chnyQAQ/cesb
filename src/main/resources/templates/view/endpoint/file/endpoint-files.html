@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{decorator/default/decorator-default}">
+<head>
+	<title>端点管理</title>
+	<script type="text/javascript" th:src="@{/view/endpoint/file/endpoint-files.js}" ></script>
+	<script th:inline="javascript">
+		endpointPage = [[${#httpServletRequest.getServletPath()}]];
+	</script>
+</head>
+<th:block layout:fragment="content">
+
+	<div class="breadcrumb-bar">
+		<nav>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a th:href="@{/}"><i class="fas fa-home"></i> 首页</a></li>
+				<li class="breadcrumb-item active">端点列表</li>
+			</ol>
+		</nav>
+		<button id="addButton" class="btn btn-primary"><i class="fas fa-plus"></i> 新建</button>
+	</div>
+	
+	<div class="content-wrapper">
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card">
+			
+					<div class="card-body">
+
+						<div class="card-title">
+							<h5><i class="far fa-list-alt"></i> 端点列表</h5>
+							<form id="searchForm" class="form-inline">
+								<div class="input-group">
+									<input name="search" type="text" class="form-control" placeholder="名称/代码" autocomplete="off">
+									<div class="input-group-append">
+										<button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+									</div>
+								</div>
+							</form>
+						</div>
+
+						<table class="table table-hover table-striped table-bordered">
+							<thead>
+								<tr>
+									<th>名称</th>
+									<th>代码</th>
+									<th>组件</th>
+									<th>路径</th>
+									<th>参数</th>
+									<th width="100px"></th>
+								</tr>
+							</thead>
+						</table>
+						<nav class="navbar">
+							<div class="pagination-info"></div>
+							<ul class="pagination"></ul>
+						</nav>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<div class="modal fade" tabindex="-1" data-backdrop="static">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<form id="dataForm">
+					<div class="modal-header">
+						<h5 class="modal-title"></h5>
+						<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group row">
+							<label class="col-sm-3 col-form-label"><i class="text-danger">*</i> 名称：</label>
+							<div class="col-sm-9">
+								<input name="name" type="text" class="form-control" autocomplete="off" placeholder="名称">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-3 col-form-label"><i class="text-danger">*</i> 代码：</label>
+							<div class="col-sm-9">
+								<input name="code" type="text" class="form-control" autocomplete="off" placeholder="代码/版本号">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-3 col-form-label"><i class="text-danger">*</i> 组件：</label>
+							<div class="col-sm-9">
+								<input name="component" type="text" class="form-control" autocomplete="off" placeholder="camel组件">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-3 col-form-label"><i class="text-danger">*</i> 路径：</label>
+							<div class="col-sm-9">
+								<input name="path" type="text" class="form-control" autocomplete="off" placeholder="资源路径">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-3 col-form-label"> 参数：</label>
+							<div class="col-sm-9">
+								<input name="options" type="text" class="form-control" autocomplete="off" placeholder="格式（key=vaule&key=vaule）">
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> 保存</button>
+						<button type="button" class="btn btn-outline-secondary" data-dismiss="modal"><i class="fas fa-ban"></i> 取消</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</th:block>
+</html>

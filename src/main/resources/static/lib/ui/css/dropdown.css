@@ -1,0 +1,4 @@
+.dropdown-toggle::after { vertical-align: .15em; }
+
+.dropdown-item:active .text-muted,
+.dropdown-item.active .text-muted { color: rgba(255,255,255,.5)!important; }

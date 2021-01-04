@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{decorator/default/decorator-default}">
+<head>
+    <title>统计分析</title>
+    <script type="text/javascript" th:src="@{/view/statistics/route/route.js}" ></script>
+</head>
+<th:block layout:fragment="content">
+
+    <div class="breadcrumb-bar">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a th:href="@{/}"><i class="fas fa-home"></i> 首页</a></li>
+                <li class="breadcrumb-item active">路由统计分析</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="card-group">
+            <div class="card mr-2">
+                <div class="card-header"><h5 class="title"><i class="fas fa-align-right"></i> 路由总数</h5></div>
+                <div class="card-body">
+                    <div class="d-flex no-block justify-content-center align-items-center text-muted">
+                        <h1 class="m-0" id="routeCount">-</h1>
+                        <h2 class="m-0 ml-2">个</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="card mr-2">
+                <div class="card-header"><h5 class="title"><i class="far fa-smile"></i> 执行成功</h5></div>
+                <div class="card-body">
+                    <div class="d-flex no-block justify-content-center align-items-center text-success">
+                        <h1 class="m-0" id="executeSuccessCount">-</h1>
+                        <h2 class="m-0 ml-2">次</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="card mr-2">
+                <div class="card-header"><h5 class="title"><i class="far fa-frown"></i> 执行失败</h5></div>
+                <div class="card-body">
+                    <div class="d-flex no-block justify-content-center align-items-center text-warning">
+                        <h1 class="m-0" id="executeFailCount">-</h1>
+                        <h2 class="m-0 ml-2">次</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-group mt-2">
+            <div class="card mr-2">
+                <div class="card-header"><h5 class="title"><i class="far fa-chart-bar"></i> 执行次数 TOP-10</h5></div>
+                <div class="card-body">
+                    <div id="countHistogram" style="height: 200px;width: 100%"></div>
+                </div>
+            </div>
+            <div class="card mr-2">
+                <div class="card-header"><h5 class="title"><i class="far fa-chart-bar"></i> 执行平均耗时 TOP-10</h5></div>
+                <div class="card-body">
+                    <div id="durationHistogram" style="height: 200px;width: 100%"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card mr-2 mt-2">
+            <div class="card-header"><h5 class="title"><i class="fas fa-chart-line"></i> 服务质量</h5>
+                <form id="searchForm" class="form-inline">
+                    <div class="input-group">
+                        <input name="dayBegin" type="text" class="input-sm form-control" placeholder="开始时间">
+                        <div class="input-group-prepend input-group-append">
+                            <span class="input-group-text"> - </span>
+                        </div>
+                        <input name="dayEnd" type="text" class="input-sm form-control" placeholder="结束时间">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary btn-sm" type="button" id="search"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-body service-body">
+               <!-- <div id="service" style="height: 250px; width: 100%"></div>-->
+            </div>
+        </div>
+    </div>
+</th:block>
+</html>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dah.desb.domain.route.RouteMapper">
+
+    <select id="getCount" resultType="int">
+		select count(1) from route where enabled = 1
+	</select>
+
+	<select id="getById" resultType="com.dah.desb.domain.route.Route">
+		select * from route where id = #{id}
+	</select>
+
+	<select id="getByCode" resultType="com.dah.desb.domain.route.Route">
+		select * from route where code = #{code}
+	</select>
+
+	<select id="getByName" resultType="com.dah.desb.domain.route.Route">
+		select * from route where name = #{name}
+	</select>
+
+	<select id="getAll" resultType="com.dah.desb.domain.route.Route">
+		select * from route order by code asc
+	</select>
+
+    <select id="getExecuteCountTop10" resultType="com.dah.desb.domain.route.Route">
+		select * from route where executeCount != '' ORDER BY executeCount desc LIMIT 10
+	</select>
+
+    <select id="getExecuteDurationTop10" resultType="com.dah.desb.domain.route.Route">
+		select * from route where executeAvgDuration != '' ORDER BY executeAvgDuration desc LIMIT 10
+	</select>
+
+	<select id="getPage" resultType="com.dah.desb.domain.route.Route">
+		select route.* from route as route where 1=1
+		<if test="search != null and search != ''">
+			<bind name="search" value="'%' + search + '%'" />
+			and (route.code like #{search} or route.name like #{search})
+		</if>
+		order by route.code, route.name
+	</select>
+
+	<insert id="save" parameterType="com.dah.desb.domain.route.Route">
+		insert into route (id, code, name, enabled, routeXML)
+		values (#{id}, #{code}, #{name}, #{enabled}, #{routeXML})
+	</insert>
+
+	<update id="update" parameterType="com.dah.desb.domain.route.Route">
+		update route set
+			code = #{code},
+			name = #{name},
+			enabled = #{enabled},
+			routeXML = #{routeXML}
+		where id = #{id}
+	</update>
+
+    <update id="updateExecuteInfo">
+		update route set
+			executeCount = #{executeCount},
+			executeAvgDuration = #{executeAvgDuration}
+		where id = #{id}
+	</update>
+
+	<delete id="remove" parameterType="java.lang.String">
+		delete from route where id = #{id}
+	</delete>
+
+</mapper>

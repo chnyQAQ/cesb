@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorate="~{decorator/default/decorator-default}">
+<head>
+	<title>路由日志</title>
+	<link th:href="@{/view/route/log/style.css}" rel="stylesheet">
+	<script type="text/javascript" th:src="@{/view/route/log/logs.js}" ></script>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		route = /*[[${route}]]*/ '';
+		endpointMap = /*[[${endpointMap}]]*/ '';
+		/*]]>*/
+	</script>
+</head>
+<th:block layout:fragment="content">
+
+	<div class="breadcrumb-bar">
+		<nav>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a th:href="@{/}"><i class="fas fa-home"></i> 首页</a></li>
+				<li class="breadcrumb-item"><a th:href="@{/routes}">路由列表</a></li>
+				<li class="breadcrumb-item active"><span th:text="${route.name}"></span></li>
+			</ol>
+		</nav>
+	</div>
+	
+	<div class="content-wrapper">
+		<div class="card">
+			<div class="card-header border-bottom">
+				<h5><i class="far fa-file-alt"></i> 路由详情</h5>
+			</div>
+			<div class="card-body d-flex">
+				<div class="col-sm-6">
+					<dl class="row">
+						<dt class="col-sm-4">代码：</dt>
+						<dd class="col-sm-8" th:text="${route.code}" ></dd>
+						<dt class="col-sm-4">启用/禁用：</dt>
+						<dd class="col-sm-8" th:text="${route.enabled ? '启用' : '禁用'}" ></dd>
+					</dl>
+				</div>
+				<div class="col-sm-6">
+					<dl class="row">
+						<dt class="col-sm-4">名称：</dt>
+						<dd class="col-sm-8" th:text="${route.name}" ></dd>
+						<dt class="col-sm-4">运行状态：</dt>
+						<dd class="col-sm-8" th:text="${route.loaded ? '运行中' : '已停止'}" ></dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="tabs-container">
+			<ul class="nav nav-tabs">
+				<li class="nav-item">
+					<a class="nav-link active" data-toggle="tab" href="#navEndpoint">路由端点</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#navLog">日志</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane show active" id="navEndpoint">
+					<div class="card">
+						<div class="card-body">
+							<div class="card-title">
+								<h5><i class="far fa-list-alt"></i> 端点</h5>
+							</div>
+							<table class="table table-hover table-striped table-bordered table-endpoints">
+								<thead>
+									<tr>
+										<th>代码</th>
+										<th>名称</th>
+										<th>类型</th>
+										<th>URL</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="navLog">
+					<div class="card">
+
+						<div class="card-body">
+							<div class="card-title">
+								<h5><i class="far fa-list-alt"></i> 日志</h5>
+								<form id="searchForm" class="form-inline">
+									<div class="input-group">
+										<input name="beginTime" type="text" class="input-sm form-control" placeholder="开始时间" autocomplete="off">
+										<div class="input-group-prepend input-group-append">
+											<span class="input-group-text"> - </span>
+										</div>
+										<input name="endTime" type="text" class="input-sm form-control" placeholder="结束时间" autocomplete="off">
+										<div class="input-group-append">
+											<button class="btn btn-outline-secondary btn-sm" type="submit"><i class="fas fa-search"></i></button>
+										</div>
+									</div>
+								</form>
+							</div>
+							<table class="table table-hover table-striped table-bordered table-logs">
+								<thead>
+								<tr>
+									<th>调用者信息</th>
+									<th>开始时间</th>
+									<th>结束时间</th>
+									<th class="text-center">耗时(毫秒)</th>
+									<th class="text-center">是否成功</th>
+									<th width="100px"></th>
+								</tr>
+								</thead>
+							</table>
+							<nav class="navbar">
+								<div class="pagination-info pagination-info-logs"></div>
+								<ul class="pagination pagination-logs"></ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</th:block>
+</html>

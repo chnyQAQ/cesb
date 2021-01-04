@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dah.desb.domain.endpoint.rest.EndpointRestMapper">
+
+	<select id="getCount" resultType="int">
+		select count(1) from endpoint_rest
+	</select>
+
+	<select id="getById" parameterType="java.lang.String" resultType="com.dah.desb.domain.endpoint.rest.EndpointRest">
+		select * from endpoint_rest where id = #{id}
+	</select>
+
+	<select id="getByCode" resultType="com.dah.desb.domain.endpoint.rest.EndpointRest">
+		select * from endpoint_rest where code = #{code}
+	</select>
+
+	<select id="getByName" resultType="com.dah.desb.domain.endpoint.rest.EndpointRest">
+		select * from endpoint_rest where name = #{name}
+	</select>
+
+	<select id="getPage" resultType="com.dah.desb.domain.endpoint.rest.EndpointRest">
+		select * from endpoint_rest rest where 1=1
+		<if test="search != null and search != ''">
+			<bind name="search" value="'%' + search + '%'" />
+			and (rest.code like #{search} or rest.name like #{search})
+		</if>
+		order by rest.code asc, rest.name asc
+	</select>
+
+	<select id="getSearch" resultType="com.dah.desb.domain.endpoint.rest.EndpointRest">
+		select * from endpoint_rest rest where 1=1
+		<if test="search != null and search != ''">
+			<bind name="search" value="'%' + search + '%'" />
+			and (rest.code like #{search} or rest.name like #{search})
+		</if>
+		order by rest.code asc, rest.name asc
+	</select>
+
+	<insert id="save" parameterType="com.dah.desb.domain.endpoint.rest.EndpointRest">
+		insert into endpoint_rest (id, code, name, component, method, path, options)
+		values (#{id}, #{code}, #{name}, #{component}, #{method}, #{path}, #{options})
+	</insert>
+
+	<update id="update" parameterType="com.dah.desb.domain.endpoint.rest.EndpointRest">
+		update endpoint_rest set
+			code = #{code},
+			name = #{name},
+			component = #{component},
+			method = #{method},
+			path = #{path},
+			options = #{options}
+		where id = #{id}
+	</update>
+
+	<delete id="remove" parameterType="java.lang.String">
+		delete from endpoint_rest where id = #{id}
+	</delete>
+
+</mapper>
